@@ -1,0 +1,200 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Full-width input fields */
+        input[type=text] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        
+        /* Add a background color when the inputs get focus */
+        input[type=text]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+        
+        input[type=text], select, textarea {
+            width: 100%; /* Full width */
+            padding: 12px; /* Some padding */
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded borders */
+            box-sizing: border-box;
+            /* Make sure that padding and width stays in place */
+            margin-top: 6px; /* Add a top margin */
+            margin-bottom: 16px; /* Bottom margin */
+            resize: vertical
+                /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+        /* Set a style for all buttons */
+        button {
+            background-color: #04AA6D;
+            color: black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+        
+        button:hover {
+            /*opacity: 1;*/
+            background-color: green;
+            color: white;
+        }
+        
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+        
+        /* Float cancel and signup buttons and add an equal width */
+        .cancelbtn, .addbtn {
+            float: left;
+            width: 50%;
+        }
+        
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+        
+        /* The Modal (background) */
+        .modal {
+             /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: #474e5d;
+            padding-top: 50px;
+        }
+        
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 60%; /* Could be more or less, depending on screen size */
+        }
+        
+        /* Style the horizontal ruler */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+        
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 35px;
+            top: 15px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #f1f1f1;
+        }
+        
+        .close:hover, .close:focus {
+            color: #f44336;
+            cursor: pointer;
+        }
+        
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .cancelbtn, .addbtn {
+                width: 100%;
+            }
+        }
+        </style>
+            <script type="text/javascript">
+        
+                function check(form)
+            {
+
+                var request = new XMLHttpRequest();
+                request.open('POST', ' https://fd8lt9wezd.execute-api.us-east-2.amazonaws.com/third/register', true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                request.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+                const email=form.email.value; 
+                const password=form.password.value;
+             const name=form.name.value; 
+             const age=form.age.value;
+
+                var userDetails = {
+                    "email": email,
+                    "password": password,
+                    "name": name,
+                    "age": age
+                   
+                }
+
+                userDetails = JSON.stringify(userDetails);
+                request.send(userDetails);
+                
+                request.onreadystatechange = (e) => {
+                    console.log(request.responseText);
+                }
+            }
+               
+             
+            
+            
+            </script>
+        </head>
+        <body class="modal">
+                <form class="modal-content" action="" method="post" name="login" id="data">
+                    <div class="container">
+                        <h1>New User</h1>
+                        <hr>
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" placeholder="Your Email id" name="email" id="email" required>
+                        
+                        <label for="password">Password</b></label>
+                        <input type="text" placeholder="Product" name="password" id="password" required>
+                        
+                        <label for="name"><b>Name</b></label>
+                        <input type="text" placeholder="Your Name" name="name" id="name" required>
+                        
+                        <label for="age"><b>Age</b></label>
+                        <input type="text" placeholder="Age" name="age" id="age" required>
+                        
+                       
+                        
+                       
+                            <input type="button" value="Submit" onclick="check(this.form)">
+                            <h3>Let's back to <a href="login.html">Login</a></h3>
+                      
+                    </div>
+                </form>
+        
+        
+        </body>
+</html>

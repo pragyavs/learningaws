@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loogin Page</title>
+    <style>
+        body{
+            background-image: url("qw.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        	#form_container{
+			position: absolute;
+			height: 40%;
+			width: 30%;
+			min-width: 300px;
+			border-radius: 15px;
+			background-color: white;
+			top: 45%;
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+		left: 35%;
+			box-shadow: 0px 0px 30px black;
+			text-align: center;
+		}
+    </style>
+    <script type="text/javascript">
+        function prom(form)
+        {
+       var age= prompt('Age from which u wana see data');
+       var num1 = parseInt(age);
+       console.log(num1);
+       window.location.href= 'https://fd8lt9wezd.execute-api.us-east-2.amazonaws.com/fourth/agefilter?age='+num1;
+       document.getElementById("data").action=url;
+       
+        }
+    function check(form)
+{
+
+ const email=form.name.value; 
+ const password=form.password.value;
+
+ var url= 'https://fd8lt9wezd.execute-api.us-east-2.amazonaws.com/second/login?email='+email+'&password='+password;
+document.getElementById("data").action=url;
+form.submit();
+
+}
+</script>
+</head>
+<body align="center"> 
+    <div id="form_container">
+        <form name="login" id='data' action='' method="post">
+   <h1 align="center">LOGIN </h1>
+   User Name <input text="uname" id="name" name="name">
+   <br><br>
+   Password <input text="pass"id="password" name="password"><br><br>
+   <input type="button" value="Login" onclick="check(this.form)">
+   <input type="button" value="Age Filter" onclick="prom(this.form)">
+</form>
+<h3>If new <a href="index.html">  Register Yourself!</a></h3>
+<input type="button" value="Get All Record" onclick="location.href=' https://fd8lt9wezd.execute-api.us-east-2.amazonaws.com/second/getalluser'">
+
+</div>
+
+</body>
+</html>
